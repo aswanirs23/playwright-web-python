@@ -1,10 +1,12 @@
 import pytest
-from playwright.sync_api import sync_playwright
-from src.pageActions.login_page import LoginPageActions
+from dataProvider.login_data import login_data
 
-def test_login(page):
-    page.goto("https://www.saucedemo.com/")
-    login_page = LoginPageActions(page)
-    login_page.enter_username("standard_user")
-    login_page.enter_password("secret_sauce")
-    login_page.click_login_button()
+@pytest.mark.parametrize("username, password, expected_error", login_data)
+def test_login(login_fixture, username, password, expected_error):
+    login_fixture.login(username, password)
+
+    if expected_error:
+        error_message = login_fixture.get_error_message()
+        assert error_message == expected_error, f"Expected: {expected_error}, Got: {error_message}"
+    else:
+        print("Login successful")

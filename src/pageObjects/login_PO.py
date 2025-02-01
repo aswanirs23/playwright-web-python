@@ -13,4 +13,7 @@ class LoginPO:
     
     def btn_login(self):
         return self.page.get_by_role("button", name="LOGIN")
+    
+    def error_message(self):
+        return self.page.locator("[data-test=\"error\"]")
         

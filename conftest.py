@@ -1,5 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
+from src.pageActions.login_page import LoginPageActions
+from config import username, password, login_url
 
 @pytest.fixture(scope="session")
 def browser():
@@ -15,3 +17,16 @@ def page(browser):
     yield page
     page.close()
     context.close()
+    
+@pytest.fixture
+def login_fixture(page):
+    login_page = LoginPageActions(page)
+    page.goto(login_url)
+    return login_page
+
+@pytest.fixture
+def logged_in_user(page):
+    login_page = LoginPageActions(page)
+    page.goto(login_url)
+    login_page.login(username, password)  
+    return page
