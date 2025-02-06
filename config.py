@@ -1,3 +1,8 @@
-login_url = "https://www.saucedemo.com/"
-username = "standard_user"
-password = "secret_sauce"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+login_url = os.getenv("LOGIN_URL")
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")

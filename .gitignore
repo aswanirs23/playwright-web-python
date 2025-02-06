@@ -5,3 +5,4 @@ __pycache__/
 allure-report/
 allure-results/
 *.log
+.pytest_cache/
