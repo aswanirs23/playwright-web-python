@@ -37,6 +37,12 @@ jobs:
           pip install -r requirements.txt
           playwright install
 
+      - name: Set Environment Variables
+        run: |
+          echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" >> $GITHUB_ENV
+          echo "USERNAME=${{ secrets.USERNAME }}" >> $GITHUB_ENV
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+
       - name: Run Tests
         run: |
           if [[ -z "${{ github.event.inputs.test_category }}" || "${{ github.event.inputs.test_category }}" == "all" ]]; then
