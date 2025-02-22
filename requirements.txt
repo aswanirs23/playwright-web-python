@@ -2,4 +2,5 @@ allure-pytest==2.13.5
 allure-python-commons==2.13.5
 playwright==1.49.1
 pytest==8.3.4
+python-dotenv
 
