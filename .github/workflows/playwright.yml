@@ -39,10 +39,10 @@ jobs:
 
       - name: Run Tests
         run: |
-          if [ "${{ github.event.inputs.test_category }}" == "all" ]; then
+          if [[ -z "${{ github.event.inputs.test_category }}" || "${{ github.event.inputs.test_category }}" == "all" ]]; then
             pytest --alluredir=allure-results
           else
-            pytest -m ${{ github.event.inputs.test_category }} --alluredir=allure-results
+            pytest -m "${{ github.event.inputs.test_category }}" --alluredir=allure-results
           fi
 
       - name: Upload Test Results
