@@ -12,7 +12,7 @@ def setup_logger(level: int = logging.DEBUG) -> logging.Logger:
 
     log_dir = "logs"
     os.makedirs(log_dir, exist_ok=True)
-    log_file = os.path.join(log_dir, f"test_log_{datetime.now().strftime('%Y%m%d')}.log")
+    log_file = os.path.join(log_dir, f"test_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
 

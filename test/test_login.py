@@ -4,6 +4,7 @@ from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+@pytest.mark.login
 @pytest.mark.parametrize("username, password, expected_error", login_data)
 def test_login(login_fixture, username, password, expected_error):
     logger.info(f"Attempting to login with username: {username}")

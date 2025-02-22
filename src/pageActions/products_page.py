@@ -19,3 +19,4 @@ class ProductsPageActions:
         product_names_element = self.products_page.hdr_product_name()
         return [name.inner_text() for name in product_names_element.all()]
     
+

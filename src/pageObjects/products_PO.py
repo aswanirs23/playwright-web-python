@@ -14,7 +14,8 @@ class productsPO:
         return self.page.get_by_role("combobox").select_option(value=sort_option)    
     
     def hdr_product_name(self):
-        return self.page.locator("//*[@class='inventory_item_name']")
+        return self.page.locator(".inventory_item_name")
     
     def hdr_product_price(self):
-        return self.page.locator("//*[@class='inventory_item_price']")
+        return self.page.locator(".inventory_item_price")
+        

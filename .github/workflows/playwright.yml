@@ -1,0 +1,52 @@
+name:  playwright-web-python-tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      test_category:
+        description: 'Select Test Category (all, login, sorting)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - login
+          - sorting
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install
+
+      - name: Run Tests
+        run: |
+          if [ "${{ github.event.inputs.test_category }}" == "all" ]; then
+            pytest --alluredir=allure-results
+          else
+            pytest -m ${{ github.event.inputs.test_category }} --alluredir=allure-results
+          fi
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results

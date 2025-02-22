@@ -5,6 +5,7 @@ from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+@pytest.mark.sorting
 @pytest.mark.usefixtures("logged_in_user")
 @pytest.mark.parametrize("sort_option, attribute, order", sort_options)
 def test_product_sorting(page, sort_option, order, attribute):
