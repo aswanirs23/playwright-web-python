@@ -72,7 +72,7 @@ pytest -m sorting
 ### **Running Tests with Bash Script**
 Use the runtest.sh script to execute tests and generate an Allure report automatically.
 ```bash
-./runtest.sh
+./run_tests.sh
 ```
 
 
