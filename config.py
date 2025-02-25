@@ -1,3 +1,10 @@
+"""
+Configuration Settings
+This module manages environment-specific configuration for the test suite.
+It loads environment variables from .env file using python-dotenv.
+
+"""
+
 from dotenv import load_dotenv
 import os
 

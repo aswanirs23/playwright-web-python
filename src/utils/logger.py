@@ -1,12 +1,23 @@
+"""
+Custom Logger Setup
+This module provides a custom logging configuration for the test framework.
+
+"""
+
 import logging
 import os
 from datetime import datetime
+import inspect
 
-def setup_logger(level: int = logging.DEBUG) -> logging.Logger:
+def setup_logger(name: str = None, level: int = logging.DEBUG) -> logging.Logger:
+    
+    if name is None:
+        frame = inspect.currentframe().f_back
+        name = frame.f_globals['__name__']
 
-    logger = logging.getLogger("TestLogger")
+    logger = logging.getLogger(name)
     if logger.hasHandlers():
-        return logger 
+        logger.handlers.clear()
 
     logger.setLevel(level)
 
@@ -14,7 +25,7 @@ def setup_logger(level: int = logging.DEBUG) -> logging.Logger:
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, f"test_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s:%(filename)s:%(lineno)d - %(message)s')
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)

@@ -1,3 +1,13 @@
+"""
+Login Test Data Provider
+This module contains test data for login functionality testing.
+It provides parameterized test cases for various login scenarios including:
+- Invalid username/password combinations
+- Empty field validations
+- Valid login credentials
+
+"""
+
 import pytest
 
 login_data = [

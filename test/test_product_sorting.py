@@ -1,9 +1,14 @@
+"""
+This module contains test cases for the product sorting functionality.
+
+"""
+
 import pytest
 from src.pageActions.products_page import ProductsPageActions
 from dataProvider.products_data import sort_options
 from src.utils.logger import setup_logger
 
-logger = setup_logger(__name__)
+logger = setup_logger()
 
 @pytest.mark.sorting
 @pytest.mark.usefixtures("logged_in_user")
