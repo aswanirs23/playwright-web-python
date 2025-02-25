@@ -1,5 +1,11 @@
 from playwright.sync_api import Page
 
+"""
+Products Page Objects
+This class contains all the locators for elements on the products page.
+
+"""
+
 class productsPO:
     def __init__(self, page: Page):
         self.page = page

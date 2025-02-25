@@ -1,3 +1,8 @@
+"""
+Products Page Actions
+This class handles all interactions with the products listing page.
+"""
+
 from src.pageObjects.products_PO import productsPO
 from src.utils.ui_actions import UIActions
 

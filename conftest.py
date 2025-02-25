@@ -1,3 +1,9 @@
+"""
+Pytest Configuration and Fixtures
+This module contains the core test configuration and shared fixtures.
+
+"""
+
 import pytest
 from playwright.sync_api import sync_playwright
 from src.pageActions.login_page import LoginPageActions

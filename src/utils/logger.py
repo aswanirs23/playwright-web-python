@@ -1,9 +1,16 @@
+"""
+Custom Logger Setup
+This module provides a custom logging configuration for the test framework.
+
+"""
+
 import logging
 import os
 from datetime import datetime
 import inspect
 
 def setup_logger(name: str = None, level: int = logging.DEBUG) -> logging.Logger:
+    
     if name is None:
         frame = inspect.currentframe().f_back
         name = frame.f_globals['__name__']

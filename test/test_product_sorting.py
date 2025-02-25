@@ -1,3 +1,8 @@
+"""
+This module contains test cases for the product sorting functionality.
+
+"""
+
 import pytest
 from src.pageActions.products_page import ProductsPageActions
 from dataProvider.products_data import sort_options

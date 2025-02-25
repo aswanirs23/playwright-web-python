@@ -1,3 +1,7 @@
+"""
+This module contains test cases for the login functionality of the application.
+"""
+
 import pytest
 from dataProvider.login_data import login_data
 from src.utils.logger import setup_logger

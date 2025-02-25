@@ -1,9 +1,14 @@
+
+"""
+UI Actions Utility
+This class provides common UI interaction methods used across the application.
+It handles basic Playwright interactions with built-in error handling and logging.
+
+"""
 from playwright.sync_api import Page
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
-import logging
 from src.utils.logger import setup_logger
 
-# logging.basicConfig(level=logging.INFO)
 logger = setup_logger()
 
 class UIActions:

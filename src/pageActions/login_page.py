@@ -1,3 +1,9 @@
+"""
+Login Page Actions
+This class contains all the interaction methods for the login page.
+
+"""
+
 from src.pageObjects.login_PO import LoginPO
 from src.utils.ui_actions import UIActions
 
