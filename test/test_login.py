@@ -2,12 +2,12 @@ import pytest
 from dataProvider.login_data import login_data
 from src.utils.logger import setup_logger
 
-logger = setup_logger(__name__)
+logger = setup_logger()
 
 @pytest.mark.login
 @pytest.mark.parametrize("username, password, expected_error", login_data)
 def test_login(login_fixture, username, password, expected_error):
-    logger.info(f"Attempting to login with username: {username}")
+    logger.info(f"Attempting to login with username: {username} and password: {password}")
     login_fixture.login(username, password)
 
     if expected_error:

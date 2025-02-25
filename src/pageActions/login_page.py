@@ -1,34 +1,23 @@
 from src.pageObjects.login_PO import LoginPO
 from src.utils.ui_actions import UIActions
-from src.utils.logger import setup_logger
 
-logger = setup_logger(__name__)
+class LoginPageActions(LoginPO,UIActions):
 
-class LoginPageActions:
-    def __init__(self, page):
-        self.page_objects = LoginPO(page)
-        self.ui_actions = UIActions(page)
+    def enter_username(self, username=""):
+        username_locator = self.txt_username()
+        self.enter_text(username_locator, username)
     
-    def enter_username(self, username):
-        if username:
-            username_locator = self.page_objects.txt_username()
-            self.ui_actions.enter_text(username_locator, username)
-            logger.info(f"Entered username: {username}")
-    
-    def enter_password(self, password):
-        if password:
-            password_locator = self.page_objects.txt_password()
-            self.ui_actions.enter_text(password_locator, password)
-            logger.info("Entered password (hidden for security)")
+    def enter_password(self, password=""):
+        password_locator = self.txt_password()
+        self.enter_text(password_locator, password)
     
     def click_login_button(self):
-        login_button_locator = self.page_objects.btn_login()
-        self.ui_actions.click_element(login_button_locator)
-        logger.info("Clicked login button")
+        login_button_locator = self.btn_login()
+        self.click_element(login_button_locator)
         
     def get_error_message(self):
-        error_message_locator = self.page_objects.error_message()
-        return error_message_locator.text_content()
+        error_message_locator = self.error_message()
+        return self.get_text_content(error_message_locator)
 
     def login(self, username, password):
         self.enter_username(username)

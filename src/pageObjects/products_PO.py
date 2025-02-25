@@ -10,9 +10,6 @@ class productsPO:
     def ddl_sort(self):
         return self.page.get_by_role("combobox")
     
-    def ddl_sort_option(self, sort_option):
-        return self.page.get_by_role("combobox").select_option(value=sort_option)    
-    
     def hdr_product_name(self):
         return self.page.locator(".inventory_item_name")
     
